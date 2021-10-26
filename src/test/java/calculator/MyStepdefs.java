@@ -33,4 +33,10 @@ public class MyStepdefs
     {
         Assert.assertEquals(arg0, result);
     }
+    @Given("^Two input values, -(\\d+) and (\\d+)$")
+    public void two_input_values_and(int arg1, int arg2)
+    {
+        value1 = -arg1;
+        value2 = arg2;
+    }
 }
