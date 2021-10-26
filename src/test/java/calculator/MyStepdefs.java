@@ -16,7 +16,7 @@ public class MyStepdefs
     {
         calculator = new Calculator();
     }
-    @Given("^Two input values, (\\d+) and (\\d+)$")
+    @Given("^Two input values, (-?\\d+) and (-?\\d+)$")
     public void twoInputValuesAnd(int arg0, int arg1)
     {
         value1 = arg0;
@@ -33,10 +33,10 @@ public class MyStepdefs
     {
         Assert.assertEquals(arg0, result);
     }
-    @Given("^Two input values, -(\\d+) and (\\d+)$")
-    public void two_input_values_and(int arg1, int arg2)
-    {
-        value1 = -arg1;
-        value2 = arg2;
-    }
+//    @Given("^An input value (-?\\d+) and operator (rvs|sqrt)$")
+//    public void two_input_values_and(int arg1, int arg2)
+//    {
+//        value1 = -arg1;
+//        value2 = arg2;
+//    }
 }
