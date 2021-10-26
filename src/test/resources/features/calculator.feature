@@ -14,21 +14,22 @@ Feature: Calculator
       | 1 | 12 | 13 |
       | -1 | 6 | 5 |
       | 2 | 2 | 4 |
-#
-#  Scenario: reverse number
-#    Given An input value -56 and operator rvs
-#    When I reverse the value
-#    Then I expect the result -0.0178571428571
-#
-#  Scenario Outline: reverse number
-#    Given An input value <value> and operator <op>
-#    When I reverse the value
-#    Then I expect the result <result>
-#    Examples:
-#    |value|op|result|
-#    |1    |rvs|1    |
-#    |-10  |rvs|-0.1 |
-#    |0    |rvs|Double.NaN|
-#    |5    |rvs|0.2       |
-#
+
+  Scenario: reverse number
+    Given An input value -56 and operator rvs
+    When I reverse the value
+    Then I expect the result -0.0178571428
+
+  Scenario Outline: reverse number
+    Given An input value <value> and operator <op>
+    When I reverse the value
+    Then I expect the result <result>
+    Examples:
+    |value|op|result|
+    |1    |rvs|1.0  |
+    |-10  |rvs|-0.1 |
+    |0    |rvs|0.0  |
+    |2    |rvs|0.5  |
+    |225  |rvs|0.0044444444|
+
 

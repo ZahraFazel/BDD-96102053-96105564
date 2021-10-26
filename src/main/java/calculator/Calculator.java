@@ -11,13 +11,13 @@ public class Calculator
     {
         if (a != 0)
             return 1.0 / a;
-        return Double.NaN;
+        return 0;
     }
 
     public double sqrt(int a)
     {
         if (a >= 0)
             return Math.sqrt(a);
-        return -1;
+        return -1.0;
     }
 }
