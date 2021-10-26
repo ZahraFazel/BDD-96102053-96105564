@@ -32,4 +32,21 @@ Feature: Calculator
     |2    |rvs|0.5  |
     |225  |rvs|0.0044444444|
 
+  Scenario: square root number
+    Given An input value -37 and operator sqrt
+    When I square root the value
+    Then I expect the result -1.0
+
+  Scenario Outline: square root number
+    Given An input value <value> and operator <op>
+    When I square root the value
+    Then I expect the result <result>
+    Examples:
+      |value|op|result|
+      |1    |sqrt|1.0  |
+      |-4  |sqrt|-1.0 |
+      |0    |sqrt|0.0  |
+      |169    |sqrt|13.0  |
+      |52  |sqrt|7.2111025509|
+
 
