@@ -18,6 +18,6 @@ public class Calculator
     {
         if (a >= 0)
             return Math.sqrt(a);
-        return -1.0;
+        return -1;
     }
 }

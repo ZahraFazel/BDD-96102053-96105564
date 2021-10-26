@@ -13,7 +13,6 @@ public class MyStepdefs
     private int result;
     private int value;
     private double output;
-    private String op;
     @Before
     public void before()
     {
@@ -38,25 +37,27 @@ public class MyStepdefs
     }
 
     @Given("^An input value (-?\\d+) and operator (rvs|sqrt)$")
-    public void an_input_value(int arg1, String operation)
+    public void an_input_value(int arg, String operation)
     {
-        value = arg1;
-        op = operation;
+        value = arg;
     }
     @When("^I (reverse|square root) the value$")
     public void theValueAfterOp(String operation)
     {
-        if(operation.equals("reverse"))
-            output = calculator.rvs(value);
-        else
-            output = calculator.sqrt(value);
-        System.out.print(output);
+        output = operation.equals("reverse") ? calculator.rvs(value) : calculator.sqrt(value);
     }
     @Then("^I expect the result (-?\\d+(\\.\\d+))$")
     public void theResultShouldBe(double arg0, double arg1)
     {
-        int numberOfDigits = Double.toString(arg1).length();
-        double number = arg0 + arg1 * Math.pow(10, -numberOfDigits);
+        double number = arg0 + arg1 * Math.pow(10, -Double.toString(arg1).length());
         Assert.assertEquals(number, output, 0.01);
+    }
+    @Then("^I expect the result out of (rvs|sqrt)\'s domain$")
+    public void theResultShouldBe(String operation)
+    {
+        if (operation.equals("rvs"))
+            Assert.assertEquals(0.0, output, 0.01);
+        else
+            Assert.assertEquals(-1.0, output, 0.01);
     }
 }
